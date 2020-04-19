@@ -31,9 +31,7 @@ public class RetrofitUtils {
                             Request request = chain.request();
                             Request requestBuilder = request.newBuilder()
                                     .addHeader("os", "android")
-                                    .addHeader("Content-Type", "application/json;charset=utf-8")
                                     .build();
-                            Log.e("test", new Gson().toJson(requestBuilder));
                             return chain.proceed(requestBuilder);
                         }
                     });
