@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.sphtech.view.adapter.AdapterYear;
 import com.example.sphtech.model.bean.BeanYear;
@@ -42,11 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Consumer<List<BeanYear>>() {
                     @Override
                     public void accept(List<BeanYear> beanYears) throws Exception {
-                        if (beanYears == null || beanYears.size() <= 0) {
-                            return;
-                        }
                         mainBinding.rvYear.setAdapter(new AdapterYear(MainActivity.this, beanYears));
-                        Log.e("test", beanYears.toString());
                     }
                 });
     }

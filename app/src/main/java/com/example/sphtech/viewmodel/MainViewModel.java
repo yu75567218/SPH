@@ -23,6 +23,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainViewModel extends ViewModel {
@@ -31,7 +32,16 @@ public class MainViewModel extends ViewModel {
     public Flowable<List<BeanYear>> getDataFromDb() {
         return DbHelper.getInstance().dataDao().getAllBeanYears()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter(new Predicate<List<BeanYear>>() {
+                    @Override
+                    public boolean test(List<BeanYear> beanYears) throws Exception {
+                        if (beanYears == null || beanYears.size() <= 0) {
+                            return false;
+                        }
+                        return true;
+                    }
+                });
     }
 
     // 请求网络数据
@@ -47,6 +57,7 @@ public class MainViewModel extends ViewModel {
 
                 });
     }
+
     // 把服务器取下的数据转换成便于客户端使用和保存的数据格式
     private void formatData(BeanQuarterTotal beanQuarter) {
         Observable.just(beanQuarter)
@@ -61,6 +72,7 @@ public class MainViewModel extends ViewModel {
                 .subscribe(new Consumer<List<BeanYear>>() {
                     @Override
                     public void accept(List<BeanYear> beanYears) throws Exception {
+                        // 保存到数据库
                         DbHelper.getInstance().dataDao().replaceBeanYears(beanYears);
                     }
                 });
