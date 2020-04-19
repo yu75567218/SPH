@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.example.sphtech.model.bean.BeanYear" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:text="@{bean.year}"
+            android:textSize="20sp"
+            tools:text="2018" />
+
+        <FrameLayout
+            android:id="@+id/q1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include
+                layout="@layout/include_item_year"
+                app:isReduce="@{bean.isReduceQ1}"
+                app:quarter='@{"Q1"}'
+                app:value="@{bean.quarterData1}" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/q2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include
+                layout="@layout/include_item_year"
+                app:isReduce="@{bean.isReduceQ2}"
+                app:quarter='@{"Q2"}'
+                app:value="@{bean.quarterData2}" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/q3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include
+                layout="@layout/include_item_year"
+                app:isReduce="@{bean.isReduceQ3}"
+                app:quarter='@{"Q3"}'
+                app:value="@{bean.quarterData3}" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/q4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include
+                layout="@layout/include_item_year"
+                app:isReduce="@{bean.isReduceQ4}"
+                app:quarter='@{"Q4"}'
+                app:value="@{bean.quarterData4}" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>
