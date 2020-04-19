@@ -1,4 +1,5 @@
 # SPH
+试用apk包下载地址 [http://d.6short.com/6jxc](http://d.6short.com/6jxc)<br>
 显示2008年至2018年通过新加坡移动网络发送的数据量。<br>
 本应用程序主题采用MVVM架构，即Model、View、ViewModel。View层做的就是和UI相关的工作，不做和业务相关的事。ViewModel层做的事情刚好和View层相反，ViewModel 只做和业务逻辑和业务数据相关的事，不做任何和UI、控件相关的事。Model实体模型。<br>
 View中采用databinding实现数据自动绑定。<br>
